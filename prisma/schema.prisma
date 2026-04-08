@@ -10,7 +10,10 @@ datasource db {
 //Comando: npx prisma db push - para criar a tabela do banco de dados
 //Comando: npx prisma db pull - para atualizar o schema.prisam com as tabelas do banco dados
 model User {
-  id      Int       @id @default(autoincrement())
-  name    String 
-  email   String    @unique
+  id          Int       @id @default(autoincrement())
+  name        String 
+  email       String    @unique
+  status      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
