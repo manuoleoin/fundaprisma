@@ -23,13 +23,17 @@ model User {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   posts       Post[]
+
+  @@map("users")
 }
 
 model Post {
   id        Int      @id @default(autoincrement())
   title     String
-  subtitle   String?
+  subtitle  String?
   content   String
-  userId    Int
+  userId    Int      @map("user_id")
   user      User     @relation(fields: [userId], references: [id])
+
+  @@map("posts")
 }
